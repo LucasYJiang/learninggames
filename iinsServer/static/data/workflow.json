@@ -1,0 +1,167 @@
+[
+  {
+    "processName": "settings",
+    "taskID": 1,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "systemsettings",
+    "description": "System setting.",
+    "taskName": "System settings",
+    "startFlag": true,
+    "endFlag": true
+  },
+  {
+    "processName": "settings",
+    "taskID": 2,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "userpermission",
+    "description": "User & permission.",
+    "taskName": "User & permission",
+    "startFlag": true,
+    "endFlag": true
+  },
+  {
+    "processName": "settings",
+    "taskID": 3,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "datainitialization",
+    "description": "Import & export data.",
+    "taskName": "Data Initialization",
+    "startFlag": true,
+    "endFlag": true
+  },
+  {
+    "processName": "settings",
+    "taskID": 4,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "databackup",
+    "description": "Data Backup.",
+    "taskName": "Data Backup",
+    "startFlag": true,
+    "endFlag": true
+  },
+  {
+    "processName": "settings",
+    "taskID": 6,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "resetsystem",
+    "description": "Reset Game.",
+    "taskName": "Reset Game",
+    "startFlag": true,
+    "endFlag": true
+  },
+  {
+    "processName": "account",
+    "taskID": 1,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "summary",
+    "description": "Summary of accounts.",
+    "taskName": "Summary",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "account",
+    "taskID": 2,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "pl",
+    "description": "the profit and loss statement.",
+    "taskName": "Profit and Loss Statement",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "account",
+    "taskID": 3,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "balance",
+    "description": "Balance Sheet.",
+    "taskName": "Balance Sheet",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "account",
+    "taskID": 4,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "cashflow",
+    "description": "Cash Flow.",
+    "taskName": "Cash Flow",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "dashboard",
+    "taskID": 1,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "value",
+    "description": "Value Created",
+    "taskName": "Value Created",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "dashboard",
+    "taskID": 2,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "market",
+    "description": "Market Performance.",
+    "taskName": "Market Performance",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "dashboard",
+    "taskID": 3,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "financial",
+    "description": "Financial Performance.",
+    "taskName": "Financial Performance",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "dashboard",
+    "taskID": 4,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "management",
+    "description": "Management Performance.",
+    "taskName": "Management Performance",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "mainpage",
+    "taskID": 1,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "kpi",
+    "description": "DECISION RECORD (1) ",
+    "taskName": "DECISION RECORD (1) ",
+    "startFlag": true,
+    "endFlag": false
+  },
+  {
+    "processName": "mainpage",
+    "taskID": 2,
+    "proviousTasks": [],
+    "status": "normal",
+    "taskKey": "analysis",
+    "description": "DECISION RECORD (2) .",
+    "taskName": "DECISION RECORD (2) ",
+    "startFlag": false,
+    "endFlag": true
+  }
+]

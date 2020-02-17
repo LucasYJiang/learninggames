@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" lang="en">
+<head>
+    <meta charset="utf-8" name="viewport" content="initial-scale=1"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link type="image/x-icon" href="{{ url_for('static', filename='icon/favicon.ico') }}" rel="shortcut icon"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <script src="{{ url_for('static', filename='lib/phaser.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/base.js') }}"></script>
+    {% block jacascript %} {% endblock %}
+</head>
+
+<body layout="column"  >
+
+{% block content %} {% endblock %}
+
+</body>
+</html>
