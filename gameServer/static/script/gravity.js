@@ -43,8 +43,10 @@ function create() {
     path.lineTo(700, 240);
     path.lineTo(700, 370);
     path.lineTo(600, 370);
-    path.lineTo(380, 500);
-    // path.lineTo(380, 350);
+    path.lineTo(600, 440);
+    path.lineTo(850, 440);
+    path.lineTo(850, 213);
+    path.lineTo(1024, 213);
     graphics = this.add.graphics();
     graphics.lineStyle(2, 0xffffff, 1);
 
