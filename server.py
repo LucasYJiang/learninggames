@@ -1,6 +1,6 @@
 __author__ = 'Isaac Jiang'
 
-from iinsServer import iinsapp
+from gameServer import iinsapp
 
 import eventlet
 from gunicorn.workers import geventlet
@@ -23,7 +23,7 @@ class GunicornApp(BaseApplication):
         return self.application
 
 if __name__ == "__main__":
-    GunicornApp(iinsapp,{'bind': '%s:%s' % ('localhost', '6001'),'workers': 1,"worker_class":'eventlet'}).run()
+    GunicornApp(iinsapp,{'bind': '%s:%s' % ('0.0.0.0', '6001'),'workers': 1,"worker_class":'eventlet'}).run()
     # socketio.run(netvisapp, host='localhost', port=5101, debug=True,use_reloader=True)
 
 
