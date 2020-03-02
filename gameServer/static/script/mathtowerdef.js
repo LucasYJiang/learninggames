@@ -248,7 +248,7 @@ function moveToXY (gameObject, x, y, speed, maxTime)
         var dx = gameObject.x - x;
         var dy = gameObject.y - y;
 
-        speed = Math.sqrt(dx * dx + dy * dy) / (maxTime / 1000);
+        speed = Math.sqrt(dx * dx + dy * dy) / (maxTime / 1500);
     }
 
     gameObject.setVelocityX(Math.cos(angle) * speed);

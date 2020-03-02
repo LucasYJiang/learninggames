@@ -20,6 +20,8 @@ var game = new Phaser.Game(config);
 
 function preload() {
     this.load.image('background', 'static/assets/background.jpg');
+    this.load.image("level 1 tower.png", "static/assets/level 1 tower.png");
+    this.load.image("fireline", "static/assets/fireline.png");
 }
 
 
