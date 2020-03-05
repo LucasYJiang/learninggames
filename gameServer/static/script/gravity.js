@@ -62,7 +62,7 @@ var gameOptions = {
                    gunFriction: 0.9
                }
 
-
+var guns =[];
 
 function preload() {
     this.load.image('background', 'static/assets/background.jpg');
@@ -104,38 +104,53 @@ function create() {
     graphics.lineStyle(2, 0xffffff, 1);
 
     path.draw(graphics);
+     var gunOrigin = this.add.sprite(100, 680, "gun")
 
-     // the rotating gun
+    addGun(this);
+    var game =this;
 
-     var places = [];
-     places.push([400,280]);
-     places.push([200,200]);
-     places.push([800,382]);
-//        var gun2 = this.add.sprite(501, 479, "gun");
-        var guns =[];
-        var i;
-        for (i = 0; i < places.length; i++){
-         var gun1 = this.add.sprite(places[i][0],  places[i][1], "gun");
-         guns.push(gun1)
-        }
+  // tween to rotate the gun
+   this.input.on('dragstart', function (pointer, gameObject) {
+          console.log("drag start")
+         gameObject.setTint(0xff0000);
+     });
+     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+         gameObject.x = dragX;
+         gameObject.y = dragY;
+     });
+     this.input.on('dragend', function (pointer, gameObject) {
 
-           // gun angular speed increases
-      // tween to rotate the gun
-         this.gunTween = this.tweens.add({
-             targets: guns,
-             angle: 360,
-             duration: gameOptions.gunSpeed,
-             repeat: -1,
-             callbackScope: this,
-             onRepeat: function(){
-
-                 // each round, gun angular speed decreases
-                 this.gunTween.timeScale = Math.max(1, this.gunTween.timeScale * gameOptions.gunFriction);
-             }
-         });
+         gameObject.clearTint();
+         gameObject.disableInteractive();
+         guns.push(gameObject)
+        addGun(game);
+     var gunTween = game.tweens.add({
+         targets: [gameObject],
+         angle: 360,
+         duration: gameOptions.gunSpeed,
+         repeat: -1,
+         callbackScope: game,
+         onRepeat: function(){
+         gunTween.timeScale = Math.max(1, gunTween.timeScale * gameOptions.gunFriction);
+         }
+     });
+     });
 }
 
 function update() {
 
+
+}
+
+function addGun(game){
+    var gunOrigin = game.add.sprite(100, 680, "gun").setInteractive();
+
+    gunOrigin.on('pointerover', function () {
+        this.setTint(0x00ff00);
+    });
+    gunOrigin.on('pointerout', function () {
+        this.clearTint();
+    });
+    game.input.setDraggable(gunOrigin);
 
 }
