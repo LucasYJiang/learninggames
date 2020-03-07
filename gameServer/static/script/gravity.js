@@ -63,15 +63,23 @@ var gameOptions = {
                }
 
 var guns =[];
+var t = 0;
+var balloon1;
+var points;
+var bombs;
 
 function preload() {
     this.load.image('background', 'static/assets/background.jpg');
     this.load.image("gun", "static/assets/gun.png");
     this.load.image("fireline", "static/assets/fireline.png");
+    this.load.image("balloon1","static/assets/gold-balloon_.jpg" )
+    this.load.image('bomb', 'static/assets/bomb.png');
 }
 
 
 function create() {
+    var game =this;
+
     this.add.image(512, 384, 'background');
     path = new Phaser.Curves.Path(0, 60);
     path.lineTo(70, 60);
@@ -104,10 +112,20 @@ function create() {
     graphics.lineStyle(2, 0xffffff, 1);
 
     path.draw(graphics);
-     var gunOrigin = this.add.sprite(100, 680, "gun")
+    points = path.getSpacedPoints(32);
+     bombs = this.physics.add.group();
+     var gunOrigin = this.physics.add.image(100, 680, "gun")
+
+  balloon1 = this.physics.add.image(20, 60, "balloon1")
+
+     balloon1.setScale(0.1)
+
+     nextPoint(game);
 
     addGun(this);
-    var game =this;
+
+
+
 
   // tween to rotate the gun
    this.input.on('dragstart', function (pointer, gameObject) {
@@ -123,6 +141,12 @@ function create() {
          gameObject.clearTint();
          gameObject.disableInteractive();
          guns.push(gameObject)
+
+        var bomb = bombs.create(gameObject.x, gameObject.y, 'bomb');
+//         bomb.setBounce(1);
+         bomb.setCollideWorldBounds(true);
+         bomb.setVelocity(Phaser.Math.Between(-200, 200), 200);
+
         addGun(game);
      var gunTween = game.tweens.add({
          targets: [gameObject],
@@ -135,6 +159,7 @@ function create() {
          }
      });
      });
+
 }
 
 function update() {
@@ -153,4 +178,37 @@ function addGun(game){
     });
     game.input.setDraggable(gunOrigin);
 
+
+
+
+}
+function nextPoint (scene)
+{
+    var next = points[t % points.length];
+
+    moveToXY(balloon1, next.x, next.y, 0, 200);
+    t++;
+
+    scene.time.addEvent({ delay: 200, callback: nextPoint, callbackScope: scene, args: [ scene ] });
+ }
+function moveToXY (gameObject, x, y, speed, maxTime)
+{
+    if (speed === undefined) { speed = 50; }
+    if (maxTime === undefined) { maxTime = 0; }
+
+    var angle = Math.atan2(y - gameObject.y, x - gameObject.x);
+
+    if (maxTime > 0)
+    {
+        //  We know how many pixels we need to move, but how fast?
+        var dx = gameObject.x - x;
+        var dy = gameObject.y - y;
+
+        speed = Math.sqrt(dx * dx + dy * dy) / (maxTime / 1500);
+    }
+
+    gameObject.setVelocityX(Math.cos(angle) * speed);
+    gameObject.setVelocityY(Math.sin(angle) * speed);
+
+    // gameObject.rotation = angle;
 }
