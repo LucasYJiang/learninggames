@@ -13,7 +13,7 @@ var config = {
 },
     physics: {
         default: 'arcade',
-        arcade: {debug: true}
+        arcade: {debug: false}
     }
 }
 var game = new Phaser.Game(config);
@@ -67,6 +67,8 @@ var t = 0;
 var balloon1;
 var points;
 var bombs;
+var score
+var scoreText
 
 function preload() {
     this.load.image('background', 'static/assets/background.jpg');
@@ -143,7 +145,7 @@ function create() {
          guns.push(gameObject)
 
         var bomb = bombs.create(gameObject.x, gameObject.y, 'bomb');
-//         bomb.setBounce(1);
+         bomb.setBounce(1);
          bomb.setCollideWorldBounds(true);
          bomb.setVelocity(Phaser.Math.Between(-200, 200), 200);
 
@@ -160,10 +162,11 @@ function create() {
      });
      });
 
+       this.physics.add.collider(balloon1, bombs, hitBomb, null, this);
+       scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 }
 
 function update() {
-
 
 }
 
@@ -204,11 +207,33 @@ function moveToXY (gameObject, x, y, speed, maxTime)
         var dx = gameObject.x - x;
         var dy = gameObject.y - y;
 
-        speed = Math.sqrt(dx * dx + dy * dy) / (maxTime / 1500);
+        speed = Math.sqrt(dx * dx + dy * dy) / (maxTime / 700);
     }
-
+console.log(Math.cos(angle) * speed)
     gameObject.setVelocityX(Math.cos(angle) * speed);
     gameObject.setVelocityY(Math.sin(angle) * speed);
 
     // gameObject.rotation = angle;
+}
+function hitBomb (player, bomb )
+{
+
+    player.setTint(0xff0000);
+
+    // player.anims.play('turn');
+
+    //gameOver = false;
+    bomb.disableBody(true, true);
+    player.disableBody(true, true);
+
+
+
+    score += 10;
+    scoreText.setText('Score: ' + score);
+    addBomb(player, bomb);
+}
+
+function addBomb (player, bomb)
+{
+     bomb.enableBody(true, true);
 }
