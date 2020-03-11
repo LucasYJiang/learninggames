@@ -13,7 +13,7 @@ var config = {
 },
     physics: {
         default: 'arcade',
-        arcade: {debug: false}
+        arcade: {debug: true}
     }
 }
 var game = new Phaser.Game(config);
@@ -146,7 +146,7 @@ function create() {
 
         var bomb = bombs.create(gameObject.x, gameObject.y, 'bomb');
          bomb.setBounce(1);
-         bomb.setCollideWorldBounds(true);
+      //   bomb.setCollideWorldBounds(true);
          bomb.setVelocity(Phaser.Math.Between(-200, 200), 200);
 
         addGun(game);
